@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import PhoneShot from './PhoneShot.vue'
+import StepShot from './StepShot.vue'
 import RichText from './RichText.vue'
 import { ui, type Step } from '../content'
 import { vReveal } from '../composables/vReveal'
@@ -32,7 +32,10 @@ defineProps<{ step: Step; total: number }>()
           <p v-if="step.tip" class="step__tip"><RichText :text="step.tip" /></p>
         </div>
 
-        <PhoneShot class="step__shot" :n="step.n" :alt="step.alt" />
+        <div class="step__shots" :class="{ 'step__shots--pair': step.shots.length > 1 }">
+          <StepShot v-for="shot in step.shots" :key="shot.file" :n="step.n" :shot="shot" />
+          <StepShot v-if="!step.shots.length" :n="step.n" />
+        </div>
       </div>
     </div>
   </article>
@@ -54,7 +57,7 @@ defineProps<{ step: Step; total: number }>()
   font-weight: 600;
 }
 
-/* Мобильный: заголовок → текст → скриншот. Десктоп: скриншот слева, заголовок и текст справа. */
+/* Заголовок → текст → скриншоты */
 .step__card {
   display: grid;
   grid-template-areas:
@@ -104,8 +107,10 @@ defineProps<{ step: Step; total: number }>()
   font-size: 17px;
 }
 
-.step__shot {
+.step__shots {
   grid-area: shot;
+  display: grid;
+  gap: 12px;
   margin-top: 6px;
 }
 
@@ -123,22 +128,17 @@ defineProps<{ step: Step; total: number }>()
 
 @media (min-width: 640px) {
   .step__card {
-    grid-template-areas:
-      'shot head'
-      'shot text';
-    grid-template-columns: 200px 1fr;
-    grid-template-rows: auto 1fr;
-    align-items: start;
-    padding: 24px 28px 24px 24px;
+    padding: 26px 28px 28px;
   }
 
   .step__num {
     font-size: 80px;
   }
 
-  .step__shot {
-    width: 100%;
-    margin-top: 0;
+  /* две картинки — рядом, одна — по центру */
+  .step__shots--pair {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
   }
 }
 </style>
