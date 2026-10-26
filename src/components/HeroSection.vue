@@ -3,12 +3,12 @@ import DecorShape from './DecorShape.vue'
 import RichText from './RichText.vue'
 import { brand, hero } from '../content'
 import { vReveal } from '../composables/vReveal'
-import { scrollToStep } from '../lib/scroll'
+import { scrollToId } from '../lib/scroll'
 </script>
 
 <template>
   <header class="hero container">
-    <p v-reveal class="hero__brand">{{ brand.name }}</p>
+    <p v-reveal class="hero__brand"><RichText :text="brand.label" /></p>
 
     <div v-reveal class="hero__art" aria-hidden="true">
       <div class="hero__glow" />
@@ -28,7 +28,7 @@ import { scrollToStep } from '../lib/scroll'
     </ul>
 
     <div v-reveal>
-      <a class="hero__cta" href="#step-1" @click.prevent="scrollToStep(1)">
+      <a class="hero__cta" href="#before" @click.prevent="scrollToId('before')">
         {{ hero.cta }} <span class="hero__arrow" aria-hidden="true">↓</span>
       </a>
     </div>

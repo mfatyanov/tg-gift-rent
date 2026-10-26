@@ -6,7 +6,7 @@ import { brand, footer } from '../content'
 <template>
   <footer class="footer container">
     <p class="footer__text"><span aria-hidden="true">💬</span> <RichText :text="footer.text" /></p>
-    <p class="footer__note">© {{ brand.name }} · {{ footer.note }}</p>
+    <p class="footer__note">© <RichText :text="brand.label" /> · {{ footer.note }}</p>
   </footer>
 </template>
 

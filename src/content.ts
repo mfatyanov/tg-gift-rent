@@ -55,7 +55,10 @@ export interface FaqItem {
 }
 
 export const brand = {
-  name: '{{BRAND_NAME}}',
+  /** Простым текстом — для заголовка вкладки и превью ссылки */
+  name: 'Подарки от Maxim',
+  /** Как бренд показывается на странице (можно с разметкой) */
+  label: 'Подарки от [Maxim](https://playerok.com/profile/Maxim316/products)',
 }
 
 export const meta = {
@@ -112,11 +115,14 @@ export const steps: Step[] = [
   {
     n: 1,
     emoji: '🌐',
-    title: 'Зайдите на Fragment',
+    title: 'Войдите на Fragment',
     text: [
-      'Откройте [fragment.com](https://fragment.com) и войдите через **свой Telegram-аккаунт** — тот, где должен появиться подарок.',
+      'Откройте [fragment.com](https://fragment.com).',
+      'Нажмите меню ☰ **вверху справа**.',
+      'Внизу меню проверьте аккаунт: там должен быть **ваш Telegram** — тот, где должен появиться подарок.',
+      'Аккаунта нет или он не тот — нажмите [[Connect Telegram]] и войдите в нужный.',
     ],
-    alt: 'Сайт fragment.com, выполнен вход через Telegram-аккаунт',
+    alt: 'Открытое меню Fragment, внизу — подключённый Telegram-аккаунт или кнопка Connect Telegram',
   },
   {
     n: 2,

@@ -5,7 +5,7 @@ import { vReveal } from '../composables/vReveal'
 </script>
 
 <template>
-  <section class="section container" aria-labelledby="before-title">
+  <section id="before" class="section container" aria-labelledby="before-title">
     <h2 id="before-title" v-reveal class="section-title">
       <span aria-hidden="true">{{ beforeStart.emoji }}</span>{{ beforeStart.title }}
     </h2>

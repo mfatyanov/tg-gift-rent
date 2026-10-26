@@ -27,13 +27,12 @@ defineProps<{ step: Step; total: number }>()
           </div>
         </div>
 
-        <div class="step__body">
-          <div class="step__text">
-            <p v-for="(line, i) in step.text" :key="i"><RichText :text="line" /></p>
-            <p v-if="step.tip" class="step__tip"><RichText :text="step.tip" /></p>
-          </div>
-          <PhoneShot :n="step.n" :alt="step.alt" />
+        <div class="step__text">
+          <p v-for="(line, i) in step.text" :key="i"><RichText :text="line" /></p>
+          <p v-if="step.tip" class="step__tip"><RichText :text="step.tip" /></p>
         </div>
+
+        <PhoneShot class="step__shot" :n="step.n" :alt="step.alt" />
       </div>
     </div>
   </article>
@@ -55,15 +54,22 @@ defineProps<{ step: Step; total: number }>()
   font-weight: 600;
 }
 
+/* Мобильный: заголовок → текст → скриншот. Десктоп: скриншот слева, заголовок и текст справа. */
 .step__card {
+  display: grid;
+  grid-template-areas:
+    'head'
+    'text'
+    'shot';
+  gap: 14px 28px;
   padding: 18px 18px 22px;
 }
 
 .step__head {
+  grid-area: head;
   display: flex;
   align-items: center;
   gap: 14px;
-  margin-bottom: 14px;
 }
 
 .step__num {
@@ -93,13 +99,14 @@ defineProps<{ step: Step; total: number }>()
   line-height: 1.25;
 }
 
-.step__body {
-  display: grid;
-  gap: 20px;
+.step__text {
+  grid-area: text;
+  font-size: 17px;
 }
 
-.step__text {
-  font-size: 17px;
+.step__shot {
+  grid-area: shot;
+  margin-top: 6px;
 }
 
 .step__text p + p {
@@ -116,21 +123,22 @@ defineProps<{ step: Step; total: number }>()
 
 @media (min-width: 640px) {
   .step__card {
-    padding: 26px 28px 28px;
+    grid-template-areas:
+      'shot head'
+      'shot text';
+    grid-template-columns: 200px 1fr;
+    grid-template-rows: auto 1fr;
+    align-items: start;
+    padding: 24px 28px 24px 24px;
   }
 
   .step__num {
     font-size: 80px;
   }
 
-  .step__body {
-    grid-template-columns: 1fr 200px;
-    align-items: start;
-    gap: 28px;
-  }
-
-  .step__body :deep(.phone) {
+  .step__shot {
     width: 100%;
+    margin-top: 0;
   }
 }
 </style>
