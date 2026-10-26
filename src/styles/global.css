@@ -1,0 +1,386 @@
+/* ---------- Токены темы ---------- */
+
+:root {
+  color-scheme: dark;
+
+  --bg: #0e0a1f;
+  --text: #f5f3ff;
+  --text-strong: #ffffff;
+  --text-muted: rgba(237, 233, 254, 0.72);
+  --hairline: rgba(255, 255, 255, 0.1);
+
+  --violet: #7c3aed;
+  --pink: #ec4899;
+  --cyan: #22d3ee;
+
+  --grad: linear-gradient(120deg, #a78bfa 0%, #f472b6 50%, #67e8f9 100%);
+  --grad-btn: linear-gradient(120deg, #7c3aed 0%, #c026d3 50%, #ec4899 100%);
+  --grad-border: linear-gradient(
+    135deg,
+    rgba(167, 139, 250, 0.6),
+    rgba(236, 72, 153, 0.2) 45%,
+    rgba(34, 211, 238, 0.5)
+  );
+
+  --glass: rgba(255, 255, 255, 0.06);
+  --glass-strong: rgba(255, 255, 255, 0.1);
+  --glass-fallback: rgba(28, 21, 56, 0.92);
+  --glow: 0 18px 48px -12px rgba(124, 58, 237, 0.6), 0 0 36px -6px rgba(236, 72, 153, 0.35);
+
+  --chip-bg: rgba(255, 255, 255, 0.08);
+  --chip-border: rgba(255, 255, 255, 0.6);
+  --chip-text: #ffffff;
+  --link: #67e8f9;
+  --code-bg: rgba(34, 211, 238, 0.13);
+  --code-text: #a5f3fc;
+
+  --warn: #fbbf24;
+  --warn-title: #fcd34d;
+  --warn-bg: linear-gradient(135deg, rgba(251, 191, 36, 0.17), rgba(251, 146, 60, 0.1));
+  --warn-border: rgba(251, 191, 36, 0.5);
+  --warn-shadow: rgba(251, 146, 60, 0.35);
+  --danger: #fb7185;
+  --danger-title: #fda4af;
+  --danger-bg: linear-gradient(135deg, rgba(244, 63, 94, 0.2), rgba(190, 18, 60, 0.12));
+  --danger-border: rgba(251, 113, 133, 0.6);
+  --danger-shadow: rgba(244, 63, 94, 0.4);
+
+  --tape: rgba(255, 255, 255, 0.22);
+  --phone-frame: #1a1433;
+  --blob-opacity: 0.6;
+  --decor-opacity: 1;
+
+  --radius: 24px;
+  --column: 720px;
+  --font-head: 'Unbounded', system-ui, sans-serif;
+  --font-body: 'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color-scheme: light;
+
+    --bg: #f7f4ff;
+    --text: #1e1537;
+    --text-strong: #0f0a24;
+    --text-muted: rgba(30, 21, 55, 0.7);
+    --hairline: rgba(30, 21, 55, 0.12);
+
+    --grad: linear-gradient(120deg, #6d28d9 0%, #db2777 50%, #0891b2 100%);
+    --grad-border: linear-gradient(
+      135deg,
+      rgba(124, 58, 237, 0.55),
+      rgba(236, 72, 153, 0.25) 45%,
+      rgba(8, 145, 178, 0.5)
+    );
+
+    --glass: rgba(255, 255, 255, 0.58);
+    --glass-strong: rgba(255, 255, 255, 0.75);
+    --glass-fallback: rgba(255, 255, 255, 0.94);
+    --glow: 0 18px 44px -14px rgba(124, 58, 237, 0.45), 0 0 30px -8px rgba(236, 72, 153, 0.3);
+
+    --chip-bg: #ffffff;
+    --chip-border: rgba(30, 21, 55, 0.65);
+    --chip-text: #1e1537;
+    --link: #7c3aed;
+    --code-bg: rgba(8, 145, 178, 0.12);
+    --code-text: #0e7490;
+
+    --warn-title: #b45309;
+    --warn-bg: linear-gradient(135deg, rgba(254, 243, 199, 0.92), rgba(255, 237, 213, 0.85));
+    --warn-border: rgba(245, 158, 11, 0.65);
+    --warn-shadow: rgba(245, 158, 11, 0.3);
+    --danger: #e11d48;
+    --danger-title: #be123c;
+    --danger-bg: linear-gradient(135deg, rgba(255, 228, 230, 0.94), rgba(254, 205, 211, 0.85));
+    --danger-border: rgba(225, 29, 72, 0.6);
+    --danger-shadow: rgba(225, 29, 72, 0.25);
+
+    --tape: rgba(30, 21, 55, 0.12);
+    --blob-opacity: 0.32;
+    --decor-opacity: 0.8;
+  }
+}
+
+/* ---------- База ---------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: var(--font-head);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+p {
+  margin: 0;
+}
+
+strong {
+  font-weight: 800;
+  color: var(--text-strong);
+}
+
+a {
+  color: var(--link);
+  font-weight: 700;
+  text-underline-offset: 3px;
+}
+
+code {
+  padding: 0.1em 0.45em;
+  border-radius: 8px;
+  background: var(--code-bg);
+  color: var(--code-text);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.9em;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 3px;
+}
+
+/* ---------- Раскладка ---------- */
+
+.container {
+  width: 100%;
+  max-width: var(--column);
+  margin-inline: auto;
+  padding-inline: 16px;
+}
+
+.section {
+  padding-block: 56px;
+}
+
+.section-title {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4em;
+  font-size: clamp(24px, 6.4vw, 34px);
+}
+
+.section-lead {
+  margin-top: 10px;
+  color: var(--text-muted);
+}
+
+.grad-text {
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ---------- Стеклянная карточка ---------- */
+
+.glass {
+  position: relative;
+  border-radius: var(--radius);
+  background: var(--glass);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  backdrop-filter: blur(14px) saturate(140%);
+}
+
+/* тонкая градиентная рамка */
+.glass::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: var(--grad-border);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  pointer-events: none;
+}
+
+/* свечение: готовая тень, анимируется только opacity */
+.glass--interactive::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: var(--glow);
+  opacity: 0;
+  transition: opacity 0.35s var(--ease-out);
+  pointer-events: none;
+}
+
+.glass--interactive {
+  transition: transform 0.35s var(--ease-out);
+}
+
+@media (hover: hover) {
+  .glass--interactive:hover {
+    transform: translateY(-4px);
+  }
+  .glass--interactive:hover::after {
+    opacity: 1;
+  }
+}
+
+.glass--interactive:active {
+  transform: translateY(-2px) scale(0.995);
+}
+
+.glass--interactive:active::after {
+  opacity: 1;
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass {
+    background: var(--glass-fallback);
+  }
+}
+
+/* ---------- Псевдокнопки из текста ---------- */
+
+.chip-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+  padding: 0.05em 0.6em;
+  margin-block: 0.1em;
+  border: 1.5px solid var(--chip-border);
+  border-radius: 10px;
+  background: var(--chip-bg);
+  color: var(--chip-text);
+  font-weight: 800;
+  font-size: 0.92em;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  box-shadow: 0 2px 0 var(--chip-border);
+  cursor: default;
+}
+
+.chip-btn--danger {
+  border-color: var(--danger);
+  color: var(--danger);
+  box-shadow: 0 2px 0 var(--danger);
+}
+
+/* ---------- Стикеры-предупреждения ---------- */
+
+.sticker {
+  --tilt: -1.5deg;
+  position: relative;
+  padding: 18px 18px 16px;
+  border: 1px solid var(--warn-border);
+  border-radius: 20px;
+  background: var(--warn-bg);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 14px 32px -16px var(--warn-shadow);
+  transform: rotate(var(--tilt));
+  transition: transform 0.35s var(--ease-out);
+}
+
+/* кусочек «скотча» сверху */
+.sticker::before {
+  content: '';
+  position: absolute;
+  top: -9px;
+  left: 50%;
+  width: 64px;
+  height: 18px;
+  margin-left: -32px;
+  border-radius: 3px;
+  background: var(--tape);
+  transform: rotate(calc(var(--tilt) * -2));
+}
+
+.sticker--danger {
+  border-color: var(--danger-border);
+  background: var(--danger-bg);
+  box-shadow: 0 14px 32px -16px var(--danger-shadow);
+}
+
+@media (hover: hover) {
+  .sticker:hover {
+    transform: rotate(0deg) scale(1.015);
+  }
+}
+
+/* ---------- Появление при скролле ---------- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.6s var(--ease-out) var(--reveal-delay, 0ms),
+    transform 0.6s var(--ease-out) var(--reveal-delay, 0ms);
+}
+
+.reveal.is-revealed {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- prefers-reduced-motion: только простой fade, декор стоит ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
+  }
+
+  .reveal {
+    transform: none;
+    transition: opacity 0.3s ease !important;
+  }
+
+  .glass--interactive:hover,
+  .glass--interactive:active {
+    transform: none;
+  }
+
+  .sticker:hover {
+    transform: rotate(var(--tilt));
+  }
+}

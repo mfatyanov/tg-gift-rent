@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="dark light" />
+    <meta name="theme-color" content="#0E0A1F" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#F7F4FF" media="(prefers-color-scheme: light)" />
+
+    <title>%PAGE_TITLE%</title>
+    <meta name="description" content="%PAGE_DESCRIPTION%" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="%BRAND_NAME%" />
+    <meta property="og:title" content="%PAGE_TITLE%" />
+    <meta property="og:description" content="%PAGE_DESCRIPTION%" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400..800&family=Unbounded:wght@600..800&subset=cyrillic&display=swap"
+    />
+
+    <style>
+      /* фон до загрузки CSS — без белой вспышки */
+      html { background: #0e0a1f; }
+      @media (prefers-color-scheme: light) { html { background: #f7f4ff; } }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+    <noscript>Включите JavaScript, чтобы увидеть инструкцию.</noscript>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
